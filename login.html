@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Login Form</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="validationLogin.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login Form</h1>
+      <div class="form-container">
+        <form name="myForm" onsubmit="return validateForm()">
+          <div class="input-name" id="email">
+            <i class="fa fa-envelope email" aria-hidden="true"></i>
+            <input
+              type="email"
+              placeholder="Enter Email"
+              name="femail"
+              class="name"
+              required
+            />
+            <b><span class="ferror"></span></b>
+          </div>
+
+          <div class="input-name" id="password">
+            <i class="fa fa-lock lock" aria-hidden="true"></i>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="fpassword"
+              class="name"
+              required
+            />
+            <b><span class="ferror"></span></b>
+          </div>
+
+          <div
+            class="text-right ng-scope"
+            ng-if="!showloginwithOauthButton"
+            ng-attr-style="{{'background-color: '+dashboard_blue_color+'!important;border-color:'+dashboard_blue_color;'color:'+button_text_color}}"
+            style="color: #fff"
+          >
+            <span class="custom_register_span"
+              ><a
+                ng-disabled="showloader==1 ? true : false "
+                ng-attr-style="{{'color: '+dashboard_blue_color+'!important'}}"
+                ui-sref="page.recover"
+                style="color: #1394ff !important"
+                ng-click="sendpwdevent()"
+                href="#/page/recover"
+                aria-disabled="false"
+                >Forgot password?</a
+              ></span
+            >
+          </div>
+
+          <div class="input-name">
+            <input
+              type="submit"
+              class="button"
+              name="fregister"
+              value="Login"
+            />
+          </div>
+
+          <div class="input-name">
+            <label for="check-button" class="check"
+              >Don't have an account? <a href="index.html">SignUp</a></label
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
