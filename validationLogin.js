@@ -10,13 +10,12 @@ function seterror(id, error) {
   element.getElementsByClassName("ferror")[0].innerHTML = error;
 }
 function validateForm() {
-  debugger;
-  const returnval = true;
+  var returnval = true;
   clearErrors();
 
   const passwordcheck =
     /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
-  const emailcheck = /^[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}/;
+  const emailcheck = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 
   const password = document.forms["myForm"]["fpassword"].value;
   if (password.length < 8) {
@@ -44,7 +43,6 @@ function setActionLogin() {
 
   const fpassword = document.forms["myForm"]["fpassword"].value;
 
-  debugger;
   fetch("http://localhost:8000/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -55,7 +53,11 @@ function setActionLogin() {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      if (data.message === "Successful login") {
+        window.location.href = `dashboard.html?femail=${femail}`;
+      } else {
+        alert(data.message);
+      }
     })
     .catch((error) => console.log(error));
   return false;

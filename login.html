@@ -11,6 +11,21 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <script src="validationLogin.js"></script>
+    <style>
+      .input-password {
+        position: relative;
+      }
+      .input-password input[type="password"] {
+        padding-right: 40px;
+      }
+      .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -29,16 +44,28 @@
             <b><span class="ferror"></span></b>
           </div>
 
-          <div class="input-name" id="password">
+          <div class="input-name input-password" id="password">
             <i class="fa fa-lock lock" aria-hidden="true"></i>
             <input
               type="password"
               placeholder="Enter Password"
+              id="password"
               name="fpassword"
               class="name"
               required
             />
-            <b><span class="ferror"></span></b>
+            <i
+              class="fa fa-eye toggle-password"
+              aria-hidden="true"
+              toggle="#password"
+              id="togglePassword"
+            ></i>
+            <b
+              ><span
+                class="ferror toggle-password"
+                style="position: relative; left: 5px"
+              ></span
+            ></b>
           </div>
 
           <div
@@ -72,11 +99,26 @@
 
           <div class="input-name">
             <label for="check-button" class="check"
-              >Don't have an account? <a href="index.html">SignUp</a></label
+              >Don't have an account? <a href="index.html"> SignUp</a></label
             >
           </div>
         </form>
       </div>
     </div>
+    <script>
+      const passwordInput = document.querySelector(
+        '.input-password input[type="password"]'
+      );
+      const togglePassword = document.querySelector(".toggle-password");
+      togglePassword.addEventListener("click", function () {
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          togglePassword.innerHTML = "Hide";
+        } else {
+          passwordInput.type = "password";
+          togglePassword.innerHTML = "Show";
+        }
+      });
+    </script>
   </body>
 </html>

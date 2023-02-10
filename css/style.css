@@ -94,3 +94,36 @@ body {
     margin-bottom: 10px;
   }
 }
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: none;
+}
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  border-right: none;
+}
+.input-name i {
+  position: absolute;
+  font-size: 18px;
+  color: blue;
+  border-right: none;
+  align-items: center;
+}
+.input-password {
+  position: relative;
+}
+.input-password input[type="password"] {
+  padding-right: 40px;
+}
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
